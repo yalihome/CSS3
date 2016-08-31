@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CSS3</title>
+    <style type="text/css">
+        body{
+            margin:0;
+        }
+        .box{
+            width:200px;
+            height:200px;
+            margin:0 auto;
+        }
+        .box1{
+            box-sizing:border-box;
+            padding:10px;border:5px solid red;
+        }
+        .box2{
+            box-sizing:content-box;
+            padding:10px;border:5px solid red;
+        }
+        .box3{
+            width:400px;height:100px;
+            border:1px solid #ddd;
+            -webkit-resize:vertical;
+            -moz-resize:vertical;
+            resize:vertical;
+            overflow:auto;
+        }
+        .box4{
+            border:5px solid green;
+            border-radius:5px;
+            /*outline:10px groove #c00;*/
+            /*outline-offset:10px;*/
+            /*outline-style:inset;*/
+            /*outline-style:outset;*/
+            /*outline-style:ridge;*/
+            transition-property:width;
+            transition-duration:2s;
+            transition-timing-function:ease;
+            transition-delay:1s;
+        }
+        .l{
+            width:600px;
+        }
+        .box5{
+            /*letter-spacing: .5em;*/
+            word-spacing:.5em;
+        }
+        .box6{
+            word-break: break-all;
+        }
+        .box7{
+            word-wrap:break-word;
+        }
+        .box7 span{
+            word-wrap:break-word;
+            /*word-break: break-all;*/
+        }
+        .box8{
+            word-break:keep-all;
+        }
+    </style>
+</head>
+<body>
+<div class="box box1"></div>
+<div class="box box2"></div>
+<div class="box box3">
+    极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，
+</div>
+<textarea class="box box3">
+    极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，极好的覅及敌方基地及及，的分基地分基地几点地飞机地方，的及覅大家非的积分基地激发的，的及覅大家及的覅几点及飞机及的覅及及地方，
+</textarea>
+<div class="box box4" id="box4"></div>
+
+<div class="box box5">hello world 你们－懂得，我不说话</div>
+<div class="box box6">
+    <span>i am a good friend ,I am very long xxxxxxxxxxxxxxxxxxxxx</span>
+</div>
+<div class="box box7">
+    <span>i am a good friend ,I am very long xxxxxxxxxxxxxxxxxxxxx</span>
+</div>
+<div class="box box8">
+    i am a good friend ,I am very long xxxx　xxxxxxxxxxxxxxxxx
+</div>
+
+<script type="text/javascript">
+    var $box4=document.getElementById("box4");
+//    setTimeout(function(){
+        $box4.className=$box4.className+" l";
+//    },500);
+
+
+</script>
+</body>
+</html>
