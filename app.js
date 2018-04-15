@@ -5,17 +5,17 @@ var _ = require("underscore");
 var mongoose= require("mongoose");
 var Movie = require("./models/movie");
 //连接本地数据库
-mongoose.connect("mongodb://172.0.0.1:27017/shop");
+mongoose.connect("mongodb://127.0.0.1:27017/shop");
 var port = process.env.port || 3000;
 var app = express();
 var bodyParser = require('body-parser');
 
 app.set("views","./views/pages");
 app.set("view engine","jade");
-app.use(express.static(path.join(__dirname,"public/libs")));
+app.use(express.static(path.join(__dirname,"public")));
 //body-parser 是一个express插件，可以对post请求的请求体进行解析， 涉及表单提交
-// app.use(bodyParser.json);
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.listen(port);
 
 console.log("listen on port "+port);
@@ -66,8 +66,8 @@ app.get("/admin/movie",function(req,res){
 
 //admin post movie 新增/更新电影
 app.post("/admin/movie/new",function(req,res){
-    var id = res.body._id;
-    var movieObj = req.body.movie;
+    var id = req.body._id;
+    var movieObj = req.body;
     var _movie;
     //跟更新
     if(id!=="undefined"){
@@ -89,13 +89,13 @@ app.post("/admin/movie/new",function(req,res){
         //新增电影
         _movie = new Movie({
             doctor:movieObj.doctor,
-            title:movieObj.doctor,
-            country:movieObj.doctor,
-            language:movieObj.doctor,
-            year:movieObj.doctor,
-            poster:movieObj.doctor,
-            summary:movieObj.doctor,
-            flash:movieObj.doctor
+            title:movieObj.title,
+            country:movieObj.country,
+            language:movieObj.language,
+            year:movieObj.year,
+            poster:movieObj.poster,
+            summary:movieObj.summary,
+            flash:movieObj.flash
         });
         _movie.save(function(e,re){
             if(e){
@@ -130,4 +130,19 @@ app.get("/admin/list",function(req,res){
             movies:movies
         });
     });
+});
+
+//list delete movie 列表页删除数据
+app.delete("/admin/list",function(req,res){
+    var id = req.query.id;
+    if(id){
+        Movie.remove({_id:id},function(err,movice){
+            if(err){
+                console.log(err);
+            }else{
+                res.json({success:1});
+            }
+
+        });
+    }
 });
