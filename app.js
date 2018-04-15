@@ -4,6 +4,7 @@ var path = require("path");
 var _ = require("underscore");
 var mongoose= require("mongoose");
 var Movie = require("./models/movie");
+var User = require("./models/user");
 //连接本地数据库
 mongoose.connect("mongodb://127.0.0.1:27017/shop");
 var port = process.env.port || 3000;
@@ -13,6 +14,7 @@ var bodyParser = require('body-parser');
 app.set("views","./views/pages");
 app.set("view engine","jade");
 app.use(express.static(path.join(__dirname,"public")));
+
 //body-parser 是一个express插件，可以对post请求的请求体进行解析， 涉及表单提交
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -146,3 +148,64 @@ app.delete("/admin/list",function(req,res){
         });
     }
 });
+
+//注册 todo 注册的数据保存还有问题
+app.post("/user/signup",function(req,res){
+    var _user = req.body;
+    var user = new User(_user);
+    User.find({name:user.name},function(err,re){
+        if(err){
+            console.log(err);
+        }
+        if(user){
+            res.redirect("/");
+        }else{
+            user.save(user,function(e,r){
+                if(err){
+                    console.log(err);
+                }
+                res.redirect("/");
+            });
+        }
+    })
+});
+
+//登陆
+app.post("/user/signin",function(req,res){
+    var _user = req.body;
+    var name = _user.name;
+    var password = _user.password;
+    User.find({name:name},function(err,r){
+        if(err){
+            console.log(err);
+        }
+        if(!user){
+            res.redirect("/");
+        }
+        user.comparePassword(password,function(e,isMatch){
+            if(e){
+                console.log(e);
+            }
+            if(isMatch){
+                //匹配
+                res.redirect("/");
+            }else{
+                console.log("password is not matched");
+            }
+        });
+    })
+});
+
+//admin userlist page
+app.get("/admin/userlist",function(req,res){
+    User.fetch(function(err,users){
+        if(err){
+            console.log(err);
+        }
+        res.render("userlist",{
+            title:"imooc 用户列表",
+            users:users
+        })
+    });
+});
+

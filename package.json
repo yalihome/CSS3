@@ -10,11 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jade": "^1.11.0",
     "moment": "^2.21.0",
     "mongoose": "^5.0.9",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-nodemon": "^0.4.2"
   }
 }
