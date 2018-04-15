@@ -5,7 +5,7 @@ var _ = require("underscore");
 var mongoose= require("mongoose");
 var Movie = require("./models/movie");
 //连接本地数据库
-mongoose.connect("mongodb://localhost/imooc");
+mongoose.connect("mongodb://172.0.0.1:27017/shop");
 var port = process.env.port || 3000;
 var app = express();
 var bodyParser = require('body-parser');

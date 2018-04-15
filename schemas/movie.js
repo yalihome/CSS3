@@ -43,4 +43,4 @@ MovieSchema.statics = {
     }
 };
 
-module.erports = MovieSchema;
+module.exports = MovieSchema;
