@@ -1,12 +1,12 @@
 var mongoose = require("mongoose");
 var bcypt = require("bcrypt-nodejs");
-let SALT_WORK_FACTOR = 10;
+var SALT_WORK_FACTOR = 10;
 var UserSchema = new mongoose.Schema({
     name:{
         type:String,
         unique: true
     },
-    password:string,
+    password:String,
     meta:{
         createAt:{
             type:Date,
