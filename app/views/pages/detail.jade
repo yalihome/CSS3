@@ -4,6 +4,13 @@ block content
         .row
             .col-md-7
                 embed(src="#{movie.flash}",allowFullScreen="true",quality="high",width="100%",height="400",align="middle",type="application/x-shockwave-flash")
+                hr
+                form(method="post",action="/user/comment")
+                    input(type="hidden",name="movie",value="#{movie._id}")
+                    input(type="hidden",name="from",value="#{user._id}")
+                    .form-group
+                        textarea.form-control(name="content",row="3")
+                    button.btn.btn-primary(type="submit")    
             .col-md-5
                 dl.dl-horizontal
                     dt 电影名字

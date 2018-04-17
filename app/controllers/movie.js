@@ -4,14 +4,22 @@ var _ = require("underscore");
 //详情页
 exports.detail = function(req,res){
     var id = req.params.id;
+    //除开查询电影，还要查询电影对应的评论
     Movie.findById(id,function(err,movie){
         if(err){
             console.log(err);
         }
-        res.render("detail",{
-            title:"imooc "+movie.title,
-            movie:movie
+        Comment.find({movie:id}).populate("from","name").exec(function(e,comments){
+            if(e){
+                console.log(e);
+            }
+            res.render("detail",{
+                title:"imooc "+movie.title,
+                movie:movie,
+                comments: comments
+            });
         });
+    
     });
 }
 

@@ -1,6 +1,7 @@
 var Index = require("../app/controllers/index");
 var User = require("../app/controllers/user");
 var Movie = require("../app/controllers/movie");
+var Comment = require("../app/controllers/comment");
 // var User = require("../models/user");
 var _ = require("underscore");
 
@@ -13,6 +14,7 @@ app.use(function(req,res,next){
         next();
     }
 });
+
 
 //首页
 app.get("/",Index.index);
@@ -42,5 +44,7 @@ app.get("/admin/movie",User.signinRequired,User.adminRequired,Movie.save);
 app.get("/admin/movie/list",User.signinRequired,User.adminRequired,Movie.list);
 //删除电影
 app.delete("/admin/list",Movie.del);
+//评论
+app.post("/user/comment",User.signinRequired,User.adminRequired,Comment);
 
 }
