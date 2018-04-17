@@ -23,19 +23,23 @@ app.get("/user/siginip",User.siginip);
 app.get("/user/siginup",User.signup);
 //登出
 app.get("/user/logout",User.logout);
+//注册页面
+app.get("/signin",User.showSignin);
+//登录页面
+app.get("/signup",User.showSignup);
 //用户列表
-app.get("/admin/userlist",User.List);
+app.get("/admin/user/list",User.signinRequired,User.adminRequired,User.List);
 
 //电影详情
 app.get("/movie/id",Movie.detail);
 //新增电影
-app.get("/admin/new",Movie.new);
+app.get("/admin/movie/new",User.signinRequired,User.adminRequired,Movie.new);
 //更新电影
-app.get("/admin/update/:id",Movie.update);
+app.get("/admin/movie/update/:id",User.signinRequired,User.adminRequired,Movie.update);
 //保存电影
-app.get("/admin/movie",Movie.save);
+app.get("/admin/movie",User.signinRequired,User.adminRequired,Movie.save);
 //电影管理列表
-app.get("/admin/list",Movie.list);
+app.get("/admin/movie/list",User.signinRequired,User.adminRequired,Movie.list);
 //删除电影
 app.delete("/admin/list",Movie.del);
 
