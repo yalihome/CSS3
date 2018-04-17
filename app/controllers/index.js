@@ -1,5 +1,5 @@
 var Movie = require("../models/movie");
-exports.Index = function(req,res){
+exports.index = function(req,res){
     //首页
     Movie.fetch(function(err,movies){
         if(err){

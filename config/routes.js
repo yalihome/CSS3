@@ -18,9 +18,9 @@ app.use(function(req,res,next){
 app.get("/",Index.index);
 
 //注册
-app.get("/user/siginip",User.siginip);
+app.get("/user/signin",User.signin);
 //登录
-app.get("/user/siginup",User.signup);
+app.get("/user/signup",User.signup);
 //登出
 app.get("/user/logout",User.logout);
 //注册页面
@@ -28,7 +28,7 @@ app.get("/signin",User.showSignin);
 //登录页面
 app.get("/signup",User.showSignup);
 //用户列表
-app.get("/admin/user/list",User.signinRequired,User.adminRequired,User.List);
+app.get("/admin/user/list",User.signinRequired,User.adminRequired,User.list);
 
 //电影详情
 app.get("/movie/id",Movie.detail);

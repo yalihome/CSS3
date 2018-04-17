@@ -4,6 +4,7 @@ var express = require("express");
 var process = require("process");
 var path = require("path");
 var mongoose= require("mongoose");
+var morgan = require("morgan");
 var dbUrl = "mongodb://127.0.0.1:27017/shop";
 //连接本地数据库
 mongoose.connect(dbUrl);
@@ -36,7 +37,7 @@ app.use(session({
 
 if("development"===app.get("env")){
     app.set("showStackError",true);
-    app.use(express.logger(":method :url :status"));
+    app.use(morgan(":method :url :status"));
     app.locals.pretty = true;
     mongoose.set("debug",true);
 }
