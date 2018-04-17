@@ -1,4 +1,7 @@
 module.exports = function(grunt){
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-nodemon");
+    grunt.loadNpmTasks("grunt-concurrent");
     grunt.initConfig({
         watch:{
             jade:{
@@ -34,14 +37,11 @@ module.exports = function(grunt){
         },
         concurrent:{  //可以重新执行tasks中的2个任务
             tasks:["nodemon","watch"],
-            optins:{
+            options:{
                 logNoncurrentOutput:true
             }
         }
     });
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-nodemon");
-    grunt.loadNpmTasks("grunt-concurrent");
 
     //避免因为语法问题停止整个grunt的执行
     grunt.option("force",true);
